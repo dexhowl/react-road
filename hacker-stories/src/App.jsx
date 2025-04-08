@@ -20,13 +20,13 @@ function App() {
 
   return (
    <div>
-      {list.map((value,key) => (
-        <div key={key}>
-          <p>{value.make}</p>
+      {list.map((car, index) => (
+        <div key={index}>
+          <p>{car.make}</p>
           <ul>
-            <li>Model: {value.model}</li>
-            <li>Year: {value.year}</li>
-            <li>Miles: {value.miles}</li>
+            <li>Model: {car.model}</li>
+            <li>Year: {car.year}</li>
+            <li>Miles: {car.miles}</li>
           </ul>
         </div>
         ))} 
