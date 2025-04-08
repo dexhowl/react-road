@@ -1,14 +1,18 @@
 import { useState } from "react"
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg"
 import "./App.css"
 
-function App() {
-  const [count, setCount] = useState(0)
+const title = "Hacker Stories";
 
+function App() {
   return (
    <div>
-     <h1>Hello React</h1>
+     <h1>Hello {title}</h1>
+     <div>
+      <form action="" method="post">
+        <label htmlFor="text">Label </label>
+        <input type="text" name="text" id="text" />
+      </form>
+     </div>
    </div>
   )
 }
