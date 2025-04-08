@@ -17,9 +17,16 @@ const list = [
 
 
 function App() {
-
   return (
    <div>
+     <List />
+   </div>
+  )
+}
+
+function List() {
+  return (
+   <>
       {list.map((car, index) => (
         <div key={index}>
           <p>{car.make}</p>
@@ -30,7 +37,7 @@ function App() {
           </ul>
         </div>
         ))} 
-   </div>
+   </>
   )
 }
 
