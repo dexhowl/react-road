@@ -19,8 +19,29 @@ const list = [
 function App() {
   return (
    <div>
-     <List />
+      <Search/>
+      <hr />
+      <List />
    </div>
+  )
+}
+
+function Search() {
+  return (
+    <>
+      <form action="" method="post">
+        <label htmlFor="search">Search </label>
+        <input type="text" name="search" id="search" />
+      </form>
+    </>
+  )
+}
+
+function Item(props) {
+  const details = props.details
+  
+  return (
+      <li>{details.id}: {details.attribute}</li>
   )
 }
 
@@ -31,9 +52,10 @@ function List() {
         <div key={index}>
           <p>{car.make}</p>
           <ul>
-            <li>Model: {car.model}</li>
-            <li>Year: {car.year}</li>
-            <li>Miles: {car.miles}</li>
+          <Item details={{id: 'Model', attribute:car.model}}/>
+          <Item details={{id: 'Year', attribute:car.year}}/>
+          <Item details={{id: 'Miles', attribute:car.miles}}/>
+          
           </ul>
         </div>
         ))} 
