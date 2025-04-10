@@ -55,6 +55,10 @@ Tooling is provided by [![Vite][Vite.js]][Vite-url]
             
     * **Instance**: Each occurence of your component is an instance. They are all independent of one another but follow the same structure as declared. 
     * **Element**: This is what's rendered at to the browser after declaration and instantiation of your component. 
+#### Handlers
+* Bubbling
+    * event.stopPropagation is a preventative measure against bubbling. Keeping the developer in control of how the browser responds to user interactions. 
+
     
         
         
