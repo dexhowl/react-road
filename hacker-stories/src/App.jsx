@@ -5,13 +5,15 @@ const list = [
     make: 'Honda',
     model: 'Civic',
     year: '2022',
-    miles: '19,240' 
+    miles: '19,240',
+    id: '0'
   },
   {
     make: 'Toyota',
     model: 'Camary',
     year: '2022',
-    miles: '21,530'
+    miles: '21,530',
+    id: '1'
   }
 ];
 
@@ -34,19 +36,14 @@ const Search = () => (
 
 
 const Item = ({details}) => (
-      <li>{details.id}: {details.attribute}</li>
+      <li>{details.year} {details.make} {details.model}: {details.miles} Miles</li>
   )
 
 
 const List = () => (
    <ul>
       {list.map((car) => (
-        <div key={car.make}>
-          <Item details={{id: 'Make', attribute:car.make}}/>
-          <Item details={{id: 'Model', attribute:car.model}}/>
-          <Item details={{id: 'Year', attribute:car.year}}/>
-          <Item details={{id: 'Miles', attribute:car.miles}}/>
-        </div>
+          <Item key={car.id} details={{make:car.make, year:car.year, model:car.model, miles:car.miles}}/>
         ))} 
    </ul>
   )
