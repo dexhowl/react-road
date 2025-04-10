@@ -5,13 +5,15 @@ const list = [
     make: 'Honda',
     model: 'Civic',
     year: '2022',
-    miles: '19,240' 
+    miles: '109,240',
+    id:'0' 
   },
   {
     make: 'Toyota',
     model: 'Camary',
-    year: '2022',
-    miles: '21,530'
+    year: '2025',
+    miles: '21,530',
+    id:'1'
   }
 ];
 
@@ -29,37 +31,34 @@ function App() {
 function Search() {
   return (
     <>
-      <form action="" method="post">
-        <label htmlFor="search">Search </label>
-        <input type="text" name="search" id="search" />
-      </form>
+      <label htmlFor="search">Search </label>
+      <input type="text" name="search" id="search" />
     </>
   )
 }
 
-function Item(props) {
-  const details = props.details
-  
+function Item({details}) {
+
   return (
-      <li>{details.id}: {details.attribute}</li>
+      <li>{details.year} {details.make} {details.model}: {details.miles} Miles</li>
   )
 }
 
 function List() {
   return (
-   <>
-      {list.map((car, index) => (
-        <div key={index}>
-          <p>{car.make}</p>
-          <ul>
-          <Item details={{id: 'Model', attribute:car.model}}/>
-          <Item details={{id: 'Year', attribute:car.year}}/>
-          <Item details={{id: 'Miles', attribute:car.miles}}/>
-          
-          </ul>
-        </div>
+   <ul>
+      {list.map((car) => (
+          <Item key={car.id} 
+            details={
+              { 
+                make: car.make, 
+                model:car.model, 
+                year:car.year, 
+                miles:car.miles
+              }
+            }/>
         ))} 
-   </>
+   </ul>
   )
 }
 
