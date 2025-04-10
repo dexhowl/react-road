@@ -22,18 +22,42 @@ Tooling is provided by [![Vite][Vite.js]][Vite-url]
 
 
 ### Fundamentals
-* Components
-    * The App component (as the Entry Point) is the Root or Ancestor to all components in the applications constructed here
-    * Child components of App can be parents and/or siblings of other components withing the application
-        * Example: App > List > Item within hacker-stories. App is the Root, List is a child of App but a parent to Item.
-    * Components that don't generate their own components from within are the leaves. 
-    * Extraction of additional components typically occurs naturally when complexity becomes too intense.
-    * Passing multiple values within a component property creates an object, not an array.
-    * Define
-        * Declaration: 
-        * Instance: 
-        * Element:
-    *
+
+#### Components
+
+* The App component (as the Entry Point) is the Root or Ancestor to all components in the applications constructed here
+* Child components of App can be parents and/or siblings of other components withing the application
+    * Example: App > List > Item within hacker-stories. App is the Root, List is a child of App but a parent to Item.
+* Components that don't generate their own components from within are the leaves. 
+* Extraction of additional components typically occurs naturally when complexity becomes too intense.
+* Passing multiple values within a component property creates an object, not an array.
+* Define:
+    * **Declaration**: This refers to the creation of an interface that is your component. Similar to defining a class in Java. This is where you create the template all instances of your component are birth from. 
+        * Function Component Declaration
+
+            ```jsx 
+            function Hello() { 
+                return (
+                    <h1>Hello World</h1>
+                )
+            }
+            ```
+        * Arrow Function Expression
+
+            ```jsx
+            const Hello = () => <h1>Hello World</h1>
+            ```
+            Both of these components provide the same output though the arrow function expression is more concise. 
+            The trade-off being that it does not allow for anything else to occur prior to returning. 
+            Removing the braces and return block means the JSX is all you get. 
+
+            **Note**: *While it is possible to mix the two it's best practice to choose a style and stick with it throughout the entire project*
+            
+    * **Instance**: Each occurence of your component is an instance. They are all independent of one another but follow the same structure as declared. 
+    * **Element**: This is what's rendered at to the browser after declaration and instantiation of your component. 
+    
+        
+        
 
 ### Roadmap
 
@@ -44,6 +68,28 @@ Tooling is provided by [![Vite][Vite.js]][Vite-url]
 
 
 ### Maintenance
+#### Structure
+The majority of the projects within this repository should be structured as follows:
+
+```
+project-name/
+├── public/                # Static assets
+├── node_modules/          # Static assets
+├── src/                   # Source code
+│   ├── components/        # Reusable components
+│   ├── styles/            # CSS or SCSS files
+│   │   └── App.css        # Main stylesheet
+│   ├── App.jsx            # Root component
+│   ├── main.jsx           # Entry point
+│   └── assets/            # Images or other assets
+├── .gitignore             # Git Ignore File
+├── eslint.config.js       # ESLint configuration
+├── index.html             # Main HTML file
+├── package.json           # Project metadata and dependencies
+├── vite.config.js         # Vite configuration
+└── README.md              # Project documentation
+```
+- Cramming a bunch of components into one file like App.jsx would be a mistake. It's best to split things up when files get too cluttered and/or complex. 
 
 
 
