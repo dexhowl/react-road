@@ -16,51 +16,40 @@ const list = [
 ];
 
 
-function App() {
-  return (
+const App = () => (
    <div>
       <Search/>
       <hr />
       <List />
    </div>
   )
-}
 
-function Search() {
-  return (
-    <>
-      <form action="" method="post">
-        <label htmlFor="search">Search </label>
-        <input type="text" name="search" id="search" />
-      </form>
-    </>
+
+const Search = () => (
+  <form action="" method="post">
+    <label htmlFor="search">Search </label>
+    <input type="text" name="search" id="search" />
+  </form>
   )
-}
 
-function Item(props) {
-  const details = props.details
-  
-  return (
+
+const Item = ({details}) => (
       <li>{details.id}: {details.attribute}</li>
   )
-}
 
-function List() {
-  return (
-   <>
-      {list.map((car, index) => (
-        <div key={index}>
-          <p>{car.make}</p>
-          <ul>
+
+const List = () => (
+   <ul>
+      {list.map((car) => (
+        <div key={car.make}>
+          <Item details={{id: 'Make', attribute:car.make}}/>
           <Item details={{id: 'Model', attribute:car.model}}/>
           <Item details={{id: 'Year', attribute:car.year}}/>
           <Item details={{id: 'Miles', attribute:car.miles}}/>
-          
-          </ul>
         </div>
         ))} 
-   </>
+   </ul>
   )
-}
+
 
 export default App
