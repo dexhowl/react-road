@@ -59,8 +59,35 @@ Tooling is provided by [![Vite][Vite.js]][Vite-url]
 * Bubbling
     * event.stopPropagation is a preventative measure against bubbling. Keeping the developer in control of how the browser responds to user interactions. 
 
-    
-        
+#### Props
+- This is the vehicle by which all data is passed down the compenent tree from the root (ancestor component) to the leaves (components with no children)
+- Props are passed between compenents within an immutable JavaScript object. 
+- Though it is possible to derive new data based on the props passed into a component via computation, values of the props themselves should not be manipulated directly. (Short ver. Props are Read-Only).
+
+***Note: Props cannot be passed from child components back up the component tree to a parent or ancestor. ***
+
+#### State
+- This is the "engine" that allows interactivity with React Components. State is typically updated via a event handler.
+```jsx
+const [count, setCount()] = React.useState(0);
+```
+*In this scenario `count` is the "stateful" variable that we want to allow the user to manipulate while `setCount()` is the function that allows plays to main roll in facilitating that value manipulation.*
+
+
+
+- Conditional Rendering allows us to show or hide content based on state as well.
+```jsx
+const [isVisible, setVisible] = React.useState(true);
+
+return (
+    ...
+    {isVisible ? <Hello name={user} /> : null}
+)
+```
+*Note: The value initialized to `isVisible` is a boolean instead of an integer this time. Unlike the `count` variable prior.*
+
+- It is also possible to pass stateful values to props of child components that will update from the parent. 
+- A change in state for the parent forces a re-rendering of the parent component in addition to all children and as such props are reloaded with the new values. 
         
 
 ### Roadmap
