@@ -1,7 +1,11 @@
 
-export default function Item({details}) {
-
+export default function Item(props) {
     return (
-        <li>{details.year} {details.make} {details.model}: {details.miles} Miles</li>
+        <li>
+            <span>{props.item.year} </span>
+            <span>{props.item.make} </span>
+            <span>{props.item.model}: </span> 
+            <span>{props.item.miles} Miles</span> 
+        </li>
     )
   }
