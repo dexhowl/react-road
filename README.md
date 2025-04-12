@@ -71,7 +71,9 @@ Removing the braces and return block means the JSX is all you get.
 - Props are passed between compenents within an immutable JavaScript object. 
 - Though it is possible to derive new data based on the props passed into a component via computation, values of the props themselves should not be manipulated directly. (Short ver. Props are Read-Only).
 
-***Note: Props cannot be passed from child components back up the component tree to a parent or ancestor.***
+> [!WARNING]
+> Props cannot be passed from child components back up the component tree to a parent or ancestor.
+
 
 ---
 #### State
@@ -94,10 +96,19 @@ return (
     {isVisible ? <Hello name={user} /> : null}
 )
 ```
-*Note: The value initialized to `isVisible` is a boolean instead of an integer this time. Unlike the `count` variable prior.*
-
-- It is also possible to pass stateful values to props of child components that will update from the parent. 
+- It is also possible to pass stateful values to props of child components that will update from the parent via a callback. 
 - A change in state for the parent forces a re-rendering of the parent component in addition to all children and as such props are reloaded with the new values. 
+
+Sequencing 
+- Render &rarr; Interaction &rarr; Update &rarr; Re-Render
+
+#### Strict Mode
+- This is a development-only feature that provides some additional checks when building React Apps. 
+- All Components, Effects, and Ref Callbacks are run twice in development when this is enabled
+- There are also checks implemented for deprecated APIs
+
+> [!WARNING]
+> If you are trying to track the rendering of your components via `console.log`, seeing them twice in development does not mean they will render twice in production.  
         
 
 ### Roadmap
