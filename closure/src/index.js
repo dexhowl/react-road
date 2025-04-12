@@ -5,6 +5,7 @@ function getEmployee(name, country) {
 }
 
 const employeeOne = getEmployee("Dexter", "USA");
+id = 25;
 const employeeTwo = getEmployee("Sasuke", "Japan");
 
 const employess = [employeeOne, employeeTwo];
