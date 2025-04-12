@@ -1,5 +1,7 @@
+let id = "1";
+
 function getEmployee(name, country) {
-  return { name, country };
+  return { id: id++, name, country };
 }
 
 const employeeOne = getEmployee("Dexter", "USA");
