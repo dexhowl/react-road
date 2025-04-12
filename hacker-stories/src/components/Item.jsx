@@ -1,5 +1,6 @@
 
 export default function Item(props) {
+    console.log("Item Component Renders");
     return (
         <li>
             <span>{props.item.year} </span>

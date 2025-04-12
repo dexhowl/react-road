@@ -2,6 +2,7 @@ import * as React from 'react'
 
 export default function Search() {
   const [query, setQuery] = React.useState('');
+  console.log("Search Component Renders");
 
     function handleChange(event) {
        setQuery(event.target.value);

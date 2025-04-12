@@ -20,6 +20,8 @@ const cars = [
 ];
 
 function App() {
+  console.log("App Component Renders");
+  
   return (
    <div>
       <Search/>
