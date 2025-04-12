@@ -66,16 +66,18 @@ Removing the braces and return block means the JSX is all you get.
 * Bubbling
     * event.stopPropagation is a preventative measure against bubbling. Keeping the developer in control of how the browser responds to user interactions. 
 
-#### Props
+#### Props (Properties)
 - This is the vehicle by which all data is passed down the compenent tree from the root (ancestor component) to the leaves (components with no children)
 - Props are passed between compenents within an immutable JavaScript object. 
 - Though it is possible to derive new data based on the props passed into a component via computation, values of the props themselves should not be manipulated directly. (Short ver. Props are Read-Only).
 
-***Note: Props cannot be passed from child components back up the component tree to a parent or ancestor. ***
+***Note: Props cannot be passed from child components back up the component tree to a parent or ancestor.***
 
 ---
 #### State
 - This is the "engine" that allows interactivity with React Components. State is typically updated via a event handler.
+- Stateful values are mutable unlike props. Though, stateful values can be passed to child components as props as well making them an exception to the rule of immutability to props. 
+    - This only applies when a function applies the mutation to state and a re-rendering occurs. 
 ```jsx
 const [count, setCount()] = React.useState(0);
 ```
