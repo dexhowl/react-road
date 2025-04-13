@@ -4,7 +4,7 @@ export default function List(props) {
     return (
      <ul>
         {props.list.map((item) => (
-            <Item key={item.id} item={item}/>   
+            <Item key={item.id} car={item}/>   
           ))} 
      </ul>
     )
