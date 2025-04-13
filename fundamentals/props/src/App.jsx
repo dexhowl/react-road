@@ -1,18 +1,18 @@
 import * as React from 'react';
 
 function App() {
+  const greeting = 'Welcome to React'
   
   return (
     <div>
-      <Welcome />
+      <Welcome text={greeting} />
     </div>
   )
 }
 
-function Welcome() {
-  const greeting = 'Welcome to React'
+function Welcome(props) {
   return (
-    <h1>{greeting}</h1>
+    <h1>{props.text}</h1>
   )
 }
 

@@ -44,9 +44,16 @@ Removing the braces and return block means the JSX is all you get.
     * event.stopPropagation is a preventative measure against bubbling. Keeping the developer in control of how the browser responds to user interactions. 
 
 ## Props (Properties)
-- This is the vehicle by which all data is passed down the compenent tree from the root (ancestor component) to the leaves (components with no children)
-- Props are passed between compenents within an immutable JavaScript object. 
+- This is the vehicle by which all data is passed down the compenent tree from the root (ancestor component) to the leaves (components with no children).
+- Props are passed between compenents within an immutable JavaScript object.
 - Though it is possible to derive new data based on the props passed into a component via computation, values of the props themselves should not be manipulated directly. (Short ver. Props are Read-Only).
+
+- Exploring the commits within the `props` directory, you'll see how we started without props and the reasons they were added. 
+- I believe the idea is to ensures the data within our components remains dynamic. 
+
+***Do props increase maintainablility since we don't need to make changes in more than one place when a value changes?***
+
+***Maybe this is an example of the DRY principle at work? You pass data using props and state to avoid duplicating knowledge throughout the code.***
 
 > [!WARNING]
 > Props cannot be passed from child components back up the component tree to a parent or ancestor.
