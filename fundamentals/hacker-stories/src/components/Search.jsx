@@ -1,19 +1,10 @@
-import * as React from 'react'
-
-export default function Search(props) {
-  const [query, setQuery] = React.useState('');
-
-    function handleChange(event) {
-       setQuery(event.target.value);
-      
-       props.onSearch(event);
-    }
+export default function Search({text, onSearch}) {
     
     return (
       <>
         <label htmlFor="search">Search </label>
-        <input type="text" name="search" onChange={handleChange} id="search" />
-        <p>Looking for: <strong>{query}</strong></p>
+        <input type="text" name="search" onChange={onSearch} id="search" />
+        <p>Looking for: <strong>{text}</strong></p>
       </>
     )
   }

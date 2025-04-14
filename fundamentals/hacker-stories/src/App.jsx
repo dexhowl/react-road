@@ -1,3 +1,4 @@
+import * as React from 'react'
 import Search from "./components/Search.jsx"
 import List from "./components/List.jsx"
 import "./App.css"
@@ -19,14 +20,17 @@ const cars = [
   }
 ];
 
-function handleSearch(event) {
-  console.log(event.target.value);
-}
-
 function App() {
+  
+  const [query, setQuery] = React.useState('');
+
+  function handleSearch(event) {
+    setQuery(event.target.value);
+  }
+
   return (
    <div>
-      <Search onSearch={handleSearch}/>
+      <Search text={query} onSearch={handleSearch}/>
       <hr />
       <List list={cars} />
    </div>
