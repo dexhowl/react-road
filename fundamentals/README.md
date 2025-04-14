@@ -1,5 +1,8 @@
 # Fundamentals
 
+> [!NOTE]
+> The directory formerly known as `hacker-stories`, is now called `the-garage`
+
 ## Components
 
 * The App component (as the Entry Point) is the Root or Ancestor to all components in the applications constructed here
@@ -308,6 +311,9 @@ return (
 
 To make this work, we have to pass a function as a prop similar to how we can pass stateful values as props. After the function is called from a child component, it moves to the parent for execution. This causes a change in state and therefore forces the component to re-render with the new values stored as props. 
 
+### Lifting
+- When a child component's state is managed within itself, we as the developer are limited in what we can do to the component based on state. 
+- Transfering the task of state management from a component up the tree to it's parent or an ancestor is called **Lifting State**
 
 ## Strict Mode
 - This is a development-only feature that provides some additional checks when building React Apps. 
