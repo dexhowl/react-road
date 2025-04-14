@@ -19,10 +19,14 @@ const cars = [
   }
 ];
 
+function handleSearch(event) {
+  console.log(event.target.value);
+}
+
 function App() {
   return (
    <div>
-      <Search/>
+      <Search onSearch={handleSearch}/>
       <hr />
       <List list={cars} />
    </div>
@@ -30,4 +34,3 @@ function App() {
 }
 
 export default App
- 

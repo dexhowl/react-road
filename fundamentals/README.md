@@ -46,6 +46,7 @@ Removing the braces and return block means the JSX is all you get.
 - Callback Event Handler
     - Allows for communication up the component tree from child to parent. 
     - Passed down the tree via React props and communicates back up the tree after the function is called. 
+    - Often used in form submissions. 
 
 - Inline Event Handler
     - Allows for declaration of the handle function directly within the JSX. 
@@ -317,4 +318,50 @@ To make this work, we have to pass a function as a prop similar to how we can pa
 > If you are trying to track the rendering of your components via `console.log`, seeing them twice in development does not mean they will render twice in production.  
 
 ## Context API
+- Allows props to be "passed" down the component hierarchy more easily. Useful when the child component is deeply nested. 
+- In reality, context is like a back door or tunnel that allows child components to consume information from parents/ancestors on demand. 
+- State can also be passed using this tunnel. 
+
+```jsx
+import React from 'react';
+
+const Context - React.createContext();
+export default Context;
+```
+*`createContext()` as shown above, provides access to both a Provider and Consumer Component. These are made available for use in both the ancestor and child components respectively*
+
+```jsx
+import Context from './Context';
+
+function Ancestor() {
+    return (
+        <Context.Provider name="John">
+            <Parent />
+        </Context.Provider>
+    )
+}
+```
+```jsx
+import Context from './Context';
+
+function Child() {
+    return (
+        <Context.Consumer>
+         {name => (
+            <h1>`Hello, ${name}`</h1>
+         )}
+        </Context.Consumer>
+    )
+}
+```
+*Passing the `name` attribute through the `Context.Provider` means the value is only known to the components that consume the Context. Meaning, we have totally bypassed the Parent Component to get the value we needed to the Child*
+
+## Hooks
+
+### useState
+- Can be used for integers, booleans, strings, and also arrays
+- Always use a function in useState's update function if your state update depends on your previous state.
+    - This means passing a function to the *state updater function* instead ensuring that the an accurate value is given at time of execution.
+
+### useReducer
 

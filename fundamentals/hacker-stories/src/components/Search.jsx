@@ -1,10 +1,12 @@
 import * as React from 'react'
 
-export default function Search() {
+export default function Search(props) {
   const [query, setQuery] = React.useState('');
 
     function handleChange(event) {
        setQuery(event.target.value);
+      
+       props.onSearch(event);
     }
     
     return (
