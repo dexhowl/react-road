@@ -41,6 +41,43 @@ Removing the braces and return block means the JSX is all you get.
 
 **Element**: This is what's rendered at to the browser after declaration and instantiation of your component. 
 
+### Controlled Components
+HTML elements have their own internal state that doesn't tie into React on it's own. This means the value of each element, unless overriden by React, is likely to become out of sync. Ultimately, this could lead to unexpected behavior out of our control. 
+
+Fixing this requires us to take control of the value within the `input` element directly using React state to ensure they stay in sync.
+
+From `the-garage`, here's one example. where our state passed within the `text` prop.
+
+```jsx
+//State managed by React
+export default function Search({text, onSearch}) {
+    
+    return (
+      <>
+        <label htmlFor="search">Search </label>
+        <input type="text" value={text} name="search" onChange={onSearch} id="search" />
+        <p>Looking for: <strong>{text}</strong></p>
+      </>
+    )
+  }
+
+//State managed internally
+export default function Search({text, onSearch}) {
+    
+    return (
+      <>
+        <label htmlFor="search">Search </label>
+        <input type="text" /* Here */ name="search" onChange={onSearch} id="search" />
+        <p>Looking for: <strong>{text}</strong></p>
+      </>
+    )
+  }
+
+
+```
+*This small change is easy to miss but it is critical to avoid unexpected errors or behaviors throughout the application.*
+
+
 ---
 ## Handlers
 - These are functions that called each time an event is triggered within the DOM such as onClick, onChange, onHover, etc.
