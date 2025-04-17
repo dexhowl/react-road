@@ -219,13 +219,6 @@ const list = [...]
 
 ...
 
-function Item({details}) {
-  
-  return (
-    <li>{details.year} {details.make} {details.model}: {details.miles} Miles</li>
-  )
-}
-
 function List() {
    return (
     <ul>
@@ -236,6 +229,12 @@ function List() {
    )
 }
 
+function Item({details}) {
+  
+  return (
+    <li>{details.year} {details.make} {details.model}: {details.miles} Miles</li>
+  )
+}
 ```
 
 *While I didn't pass `props` to the `List` component here, you can see the `Item` component does have props passed though deconstructed. This only worked because the list variable was declared globally and all our components were inside a single file (App.jsx). Though, it's not great to look at or easy to read and overall unecessarily verbose.*

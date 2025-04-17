@@ -1,10 +1,10 @@
 import Item from "./Item.jsx"
 
-export default function List(props) {
+export default function List({list}) {
     return (
      <ul>
-        {props.list.map((item) => (
-            <Item key={item.id} car={item}/>   
+        {list.map(({id, ...item}) => (
+            <Item key={id} {...item}/>   
           ))} 
      </ul>
     )
