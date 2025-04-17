@@ -36,9 +36,12 @@ const cars = [
 
 function App() {
   
-  const [query, setQuery] = React.useState('');
+  const [query, setQuery] = React.useState(localStorage.getItem('search') ?? 'React');
   const filteredCars = searchCars(cars);
 
+  React.useEffect(() => {
+    localStorage.setItem('search', query)
+  }, [query]);
 
   function handleSearch(event) {
     setQuery(event.target.value);
