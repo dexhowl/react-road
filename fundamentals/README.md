@@ -426,3 +426,8 @@ function Child() {
 
 > [!CAUTION]
 > Custom Hooks DO NOT have access to component props!
+
+### Fragments
+- Fragments are used to wrap two or more HTML elements when you don't want an additional DOM node like `div`
+- You'll either see `<React.Fragment>...</React.Frament>` or `<>...</>` as shorthand. 
+*Check out Search.jsx for an example*

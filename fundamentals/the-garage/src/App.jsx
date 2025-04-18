@@ -1,6 +1,6 @@
 import * as React from 'react'
 import useLocalStorageState from './hooks/userLocalStorageState';
-import Search from "./components/Search"
+import Input from "./components/Input"
 import List from "./components/List"
 import {cars} from './data/cars'
 import "./App.css"
@@ -24,7 +24,9 @@ function App() {
 
   return (
    <div>
-      <Search text={query} onSearch={handleSearch}/>
+      <Input id={'search'} name={'search'} text={query} onSearch={handleSearch}>
+        <strong>Search: </strong>
+      </Input>
       <hr />
       <List list={filteredCars} />
    </div>
