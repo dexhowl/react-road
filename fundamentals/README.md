@@ -407,3 +407,22 @@ function Child() {
 
 ### useReducer
 
+### useEffect
+- Can be used to synchronize a component with something outside React. 
+- Requires `setup`, `cleanup`, and `deps` in order to run effectively. 
+
+> [!TIP]
+> If you are not attempting to sync with an exteral system outside React, you likely don't need Effects.
+
+### useRef
+- Returns a mutable object
+- Changes in the value of a `ref` do not cause your components to re-render. 
+
+### Custom Hooks
+- Used primarily for encapsulation and separate complex logic from your React components. 
+- Must start with `use` by convention similar to the built-in hooks mentioned above. 
+- We create these with reusability in mind so values are typically generic within custom hooks. They also typically return an array. 
+- Keep in mind, your custom hooks can also have `state`, `useEffect`, accept parameters, and share stateful logic.
+
+> [!CAUTION]
+> Custom Hooks DO NOT have access to component props!
