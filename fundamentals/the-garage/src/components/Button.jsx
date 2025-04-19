@@ -1,7 +1,7 @@
-export default function Button({index, value, onClick}) {
+export default function Button({type, value, onClick}) {
   return (
     <>
-      <button id={index} onClick={onClick}>{value}</button>
+      <button type={type} onClick={onClick}>{value}</button>
     </>
   );
 }

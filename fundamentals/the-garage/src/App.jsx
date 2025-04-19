@@ -12,8 +12,11 @@ function App() {
 
   const filteredCars = searchCars(cars);
 
-  function handleClick(event) {
-    setCars(cars.toSpliced(event.target.id,1));
+  function handleRemoveCar(item) {
+    const newCars = cars.filter(
+      (car) => item.id !== car.id 
+    );
+    setCars(newCars);
   }
 
   function handleSearch(event) {
@@ -35,7 +38,7 @@ function App() {
         <strong>Search: </strong>
       </Input>
       <hr />
-      <List list={filteredCars} onClick={handleClick}/>
+      <List list={filteredCars} onRemoveItem={handleRemoveCar}/>
    </div>
   )
 }

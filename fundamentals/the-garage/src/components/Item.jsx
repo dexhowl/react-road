@@ -1,6 +1,5 @@
-import Button from './Button'
-
-export default function Item({year, make, model, miles, position, onClick}) {
+export default function Item({item, onRemoveItem}) {
+    const {year,make,model,miles} = item;
     
     return (
         <li>
@@ -8,7 +7,7 @@ export default function Item({year, make, model, miles, position, onClick}) {
             <span>{make} </span>
             <span>{model}: </span> 
             <span>{miles} Miles </span>
-            <Button value={'Delete'} index={position} onClick={onClick} />
+            <button type='button' onClick={() => onRemoveItem(item)}>Delete</button>
         </li>
     )
   }

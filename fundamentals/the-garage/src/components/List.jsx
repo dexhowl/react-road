@@ -1,10 +1,10 @@
 import Item from "./Item"
 
-export default function List({list, onClick}) {
+export default function List({list, onRemoveItem}) {
     return (
       <ul>
-          {list.map(({id, ...item}, listIndex) => (
-                <Item key={id} {...item} position={listIndex} onClick={onClick}/>
+          {list.map((item) => (
+                <Item key={item.id} item={item} onRemoveItem={onRemoveItem}/>
             ))} 
       </ul>
     )
