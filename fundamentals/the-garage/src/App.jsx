@@ -2,16 +2,23 @@ import * as React from 'react'
 import useLocalStorageState from './hooks/userLocalStorageState';
 import Input from "./components/Input"
 import List from "./components/List"
-import {cars} from './data/cars'
+import { carList } from './data/carList'
 import "./App.css"
 
 function App() {
   
   const [query, setQuery] = useLocalStorageState('search',"React");
+  const [cars, setCars] = React.useState(carList);
+
   const filteredCars = searchCars(cars);
+
+  function handleClick(event) {
+    setCars(cars.toSpliced(event.target.id,1));
+  }
 
   function handleSearch(event) {
     setQuery(event.target.value);
+    
   }
 
   function searchCars(cars) {
@@ -24,11 +31,11 @@ function App() {
 
   return (
    <div>
-      <Input id={'search'} name={'search'} text={query} onSearch={handleSearch}>
+      <Input id={'search'} name={'search'} text={query} onSearch={handleSearch} isFocused>
         <strong>Search: </strong>
       </Input>
       <hr />
-      <List list={filteredCars} />
+      <List list={filteredCars} onClick={handleClick}/>
    </div>
   )
 }

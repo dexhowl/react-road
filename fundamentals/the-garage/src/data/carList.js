@@ -1,5 +1,5 @@
 
-export const cars = [
+export const carList = [
   {
     make: 'Honda',
     model: 'Civic',
@@ -32,37 +32,43 @@ export const cars = [
     make: 'Ferrari', 
     model: '488 Spider', 
     year: '2020', 
-    miles: '12,000' 
+    miles: '12,000',
+    id:'4' 
   },
   { 
     make: 'Lamborghini', 
     model: 'Huracán EVO', 
     year: '2019', 
-    miles: '8,000' 
+    miles: '8,000',
+    id:'5' 
   },
   { 
     make: 'Bugatti', 
     model: 'Chiron Sport', 
     year: '2021', 
-    miles: '5,000' 
+    miles: '5,000',
+    id:'6' 
   },
   { 
     make: 'McLaren', 
     model: '720S Coupe', 
     year: '2018', 
-    miles: '15,000' 
+    miles: '15,000',
+    id:'7' 
   },
   { 
     make: 'Porsche', 
     model: '911 GT3 RS', 
     year: '2020', 
-    miles: '10,000' 
+    miles: '10,000',
+    id:'8' 
   },
   { 
     make: 'Aston Martin', 
     model: 'DB11', 
     year: '2019', 
-    miles: '14,000' 
+    miles: '14,000',
+    id:'9' 
   }
   
 ];
