@@ -406,6 +406,8 @@ function Child() {
     - This means passing a function to the *state updater function* instead ensuring that the an accurate value is given at time of execution.
 
 ### useReducer
+- Used in state transitions when multiple stateful values become dependent on each other. 
+- Also allows for grouping stateful values that share a signular domain or related purpose. 
 
 ### useEffect
 - Can be used to synchronize a component with something outside React. 

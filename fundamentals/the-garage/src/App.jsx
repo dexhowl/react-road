@@ -9,18 +9,30 @@ function App() {
   
   const [query, setQuery] = useLocalStorageState('search',"React");
   const [isLoading, setIsLoading] = React.useState();
-  const [cars, setCars] = React.useState([]);
+  const [cars, dispatchCars] = React.useReducer(carsReducer, []);
+
+  function carsReducer(state, action) {
+    switch (action.type) {
+      case 'SET_CARS':
+        return action.payload;
+      case 'REMOVE_CAR':
+        return action.payload;
+      default:
+        throw new Error();
+    }
+  }
 
   React.useEffect(() => {
+    setIsLoading(true)   
+
     getAsyncCars().then(result => {
-      setCars(result.data.cars);
+      dispatchCars({type:"SET_CARS", payload: result.data.cars});
       setIsLoading(false);
     })
   }, []);
 
   function getAsyncCars() {
-    return new Promise((resolve) => {
-      setIsLoading(true)     
+    return new Promise((resolve) => {  
       setTimeout(
         () => resolve({data:{cars: carList}})  
       , 2000);
@@ -34,7 +46,7 @@ function App() {
     const newCars = cars.filter(
       (car) => item.id !== car.id 
     );
-    setCars(newCars);
+    dispatchCars({type:"REMOVE_CAR", payload: newCars});
   }
 
   function handleSearch(event) {
