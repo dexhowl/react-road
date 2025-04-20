@@ -12,11 +12,14 @@ function App() {
   const [cars, dispatchCars] = React.useReducer(carsReducer, []);
 
   function carsReducer(state, action) {
+  
     switch (action.type) {
       case 'SET_CARS':
         return action.payload;
       case 'REMOVE_CAR':
-        return action.payload;
+        return state.filter(
+          (car) => action.payload.id !== car.id 
+        );
       default:
         throw new Error();
     }
@@ -35,7 +38,7 @@ function App() {
     return new Promise((resolve) => {  
       setTimeout(
         () => resolve({data:{cars: carList}})  
-      , 2000);
+      , 1000);
     })
 
   }
@@ -43,10 +46,7 @@ function App() {
   const filteredCars = searchCars(cars);
 
   function handleRemoveCar(item) {
-    const newCars = cars.filter(
-      (car) => item.id !== car.id 
-    );
-    dispatchCars({type:"REMOVE_CAR", payload: newCars});
+    dispatchCars({type:"REMOVE_CAR", payload: item});
   }
 
   function handleSearch(event) {
