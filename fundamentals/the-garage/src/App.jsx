@@ -8,7 +8,25 @@ import "./App.css"
 function App() {
   
   const [query, setQuery] = useLocalStorageState('search',"React");
-  const [cars, setCars] = React.useState(carList);
+  const [isLoading, setIsLoading] = React.useState();
+  const [cars, setCars] = React.useState([]);
+
+  React.useEffect(() => {
+    getAsyncCars().then(result => {
+      setCars(result.data.cars);
+      setIsLoading(false);
+    })
+  }, []);
+
+  function getAsyncCars() {
+    return new Promise((resolve) => {
+      setIsLoading(true)     
+      setTimeout(
+        () => resolve({data:{cars: carList}})  
+      , 2000);
+    })
+
+  }
 
   const filteredCars = searchCars(cars);
 
@@ -38,7 +56,7 @@ function App() {
         <strong>Search: </strong>
       </Input>
       <hr />
-      <List list={filteredCars} onRemoveItem={handleRemoveCar}/>
+      <List list={filteredCars} onRemoveItem={handleRemoveCar} loading={isLoading}/>
    </div>
   )
 }
