@@ -7,19 +7,8 @@ import "./App.css"
 
 function App() {
   
-  const [query, setQuery] = useLocalStorageState('search',"React");
-  const [news, dispatchNews] = useListReducer({data: [], isLoading: false, isError: false});
-
-  const filteredNews = searchNews(news);
-
-  function searchNews(articles) {
-    let newList = articles.data.filter((article) => {
-        return article.title.toLowerCase().includes(query.toLowerCase());
-    });
-    
-    return newList;
-  }
-
+  const [query, setQuery] = useLocalStorageState('search',"Tesla");
+  const [news, dispatchNews] = useListReducer(query, {data: [], isLoading: false, isError: false});
 
   function handleRemoveItem(item) {
     dispatchNews({type:"REMOVE_ITEM", payload: item});
@@ -38,7 +27,7 @@ function App() {
         <strong>Search: </strong>
       </Input>
       <hr />
-      <List list={filteredNews} onRemoveItem={handleRemoveItem} loading={news.isLoading} error={news.isError}/>
+      <List list={news.data} onRemoveItem={handleRemoveItem} loading={news.isLoading} error={news.isError}/>
    </div>
   )
 }
