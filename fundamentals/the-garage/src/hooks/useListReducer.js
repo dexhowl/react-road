@@ -1,18 +1,18 @@
 import * as React from "react";
 
-export default function useListReducer(list, dataSet) {
+export default function useListReducer(dataSet) {
   const [value, dispatcValue] = React.useReducer(listReducer, dataSet);
-
+  
   React.useEffect(() => {
     dispatcValue({ type: "FETCH_INIT" });
 
-    getAsyncItems(list)
+    getHackerNews()
         .then((result) => {
-        dispatcValue({ type: "FETCH_SUCCESS", payload: result.data.items });
+        dispatcValue({ type: "FETCH_SUCCESS", payload: result.hits});
+        
         })
         .catch(() => dispatcValue({ type: "FETCH_FAILURE" }));
     }, []);
-
 
   return [value, dispatcValue];
 }
@@ -33,15 +33,20 @@ function listReducer(state, action) {
     case "REMOVE_ITEM":
       return {
         ...state,
-        data: state.data.filter((item) => action.payload.id !== item.id),
+        data: state.data.filter((item) => action.payload.title !== item.title),
       };
     default:
       throw new Error();
   }
 }
 
-function getAsyncItems(list) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve({ data: { items: list } }), 1000);
-  });
+async function getHackerNews() {
+  
+  const response = await fetch('http://hn.algolia.com/api/v1/search?query=React');
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch articles");
+  }
+
+  return await response.json();
 }
