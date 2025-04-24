@@ -22,16 +22,14 @@ function App() {
     setQuery(event.target.value);
 
   }
-  function handleSearchSubmit(event) {
+  function handleSearchSubmit() {
     setUrl(`${HACKER_NEWS_API_ENDPOINT}${query}`)
-
-    event.preventDefault();
   }
   
 
   return (
    <div>
-      <Form onSubmit={handleSearchSubmit}>
+      <Form formAction={handleSearchSubmit}>
         <Input id={'search'} name={'search'} text={query} onSearch={handleSearch} isFocused>
           <strong>Search: </strong>
         </Input>
