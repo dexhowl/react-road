@@ -1,22 +1,28 @@
 import * as React from "react";
+import axios from 'axios'
 
-export default function useListReducer(term, dataSet) {
-  const [value, dispatcValue] = React.useReducer(listReducer, dataSet);
-  
-  React.useEffect(() => {
-    if (!term) return;
+export default function useListReducer(endpoint, dataSet) {
+  const [value, dispatchValue] = React.useReducer(listReducer, dataSet);
+
+const getHackerNews = React.useCallback(async () => {
+        dispatchValue({ type: "FETCH_INIT" });
+
+        try {
+            const response = await axios.get(endpoint);
+            dispatchValue({ type: "FETCH_SUCCESS", payload: response.data.hits});
+        }
+        catch {
+            dispatchValue({ type: "FETCH_FAILURE" });
+        }
+    }, [endpoint]) 
+
     
-    dispatcValue({ type: "FETCH_INIT" });
-
-    getHackerNews(term)
-        .then((result) => {
-        dispatcValue({ type: "FETCH_SUCCESS", payload: result.hits});
+  React.useEffect(() => {
+    getHackerNews();
         
-        })
-        .catch(() => dispatcValue({ type: "FETCH_FAILURE" }));
-    }, [term]);
+    }, [getHackerNews]);
 
-  return [value, dispatcValue];
+  return [value, dispatchValue];
 }
 
 function listReducer(state, action) {
@@ -40,15 +46,4 @@ function listReducer(state, action) {
     default:
       throw new Error();
   }
-}
-
-async function getHackerNews(search) {
-  
-  const response = await fetch(`http://hn.algolia.com/api/v1/search?query=${search}`);
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch articles");
-  }
-
-  return await response.json();
 }
