@@ -4,7 +4,7 @@ import useListReducer from './hooks/useListReducer';
 import Input from "./components/Input"
 import List from "./components/List"
 import Form from "./components/Form"
-import "./App.css"
+import styles from  "./App.module.css"
 
 function App() {
   const HACKER_NEWS_API_ENDPOINT = 'http://hn.algolia.com/api/v1/search?query='
@@ -28,14 +28,14 @@ function App() {
   
 
   return (
-   <div className='container'>
-      <h1 className="headline-primary">My Hacker Stories</h1>
-      <Form formAction={handleSearchSubmit}>
-        <Input id={'search'} name={'search'} text={query} onSearch={handleSearch} isFocused>
+   <div className={styles.container}>
+      <h1 className={styles.headlinePrimary}>My Hacker Stories</h1>
+      <Form styles={styles}  formAction={handleSearchSubmit}>
+        <Input styles={styles} id={'search'} name={'search'} text={query} onSearch={handleSearch} isFocused>
           <strong>Search: </strong>
         </Input>
       </Form>
-      <List list={news.data} onRemoveItem={handleRemoveItem} loading={news.isLoading} error={news.isError}/>
+      <List styles={styles}  list={news.data} onRemoveItem={handleRemoveItem} loading={news.isLoading} error={news.isError}/>
    </div>
   )
 }

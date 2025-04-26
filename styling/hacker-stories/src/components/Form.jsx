@@ -1,9 +1,9 @@
 
-export default function Form({children, formAction}) {
+export default function Form({children, formAction, styles}) {
 
 
     return (
-        <form className="form" action={formAction}>
+        <form className={styles.form} action={formAction}>
             {children}
         </form>
     )
