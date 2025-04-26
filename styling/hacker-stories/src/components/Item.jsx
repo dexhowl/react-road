@@ -1,3 +1,4 @@
+import Check from '../check.svg?react'
 export default function Item({item, onRemoveItem}) {
 
     
@@ -9,7 +10,7 @@ export default function Item({item, onRemoveItem}) {
             <span style={{ width: '30%'}}>by {item.author} </span>
             <span style={{ width: '10%'}}>{item.num_comments} </span>
             <span style={{ width: '10%'}}>{item.points} </span>
-            <span style={{ width: '10%'}}><button className="btn btn-sm" type='button' onClick={() => onRemoveItem(item)}>Dismiss</button></span>
+            <span style={{ width: '10%'}}><button className="btn btn-sm" type='button' onClick={() => onRemoveItem(item)}><Check height="18px" width="18px"/></button></span>
         </li>
     )
   }
