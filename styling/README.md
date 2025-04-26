@@ -50,8 +50,8 @@ import styles from "./App.module.css"
 
 Applying classes
 ```jsx
-<div className={{styles.container}}>
-<h1 className={{styles.headlinePrimary}}>My Hacker Stories</h1>
+<div className={styles.container}>
+<h1 className={styles.headlinePrimary}>My Hacker Stories</h1>
 ```
 
 *You'll notice we've imported our stylesheet into it's own object for later use and we are no longer passing a string to our className. This styling strategy means each class we define inside our CSS files are accessible within this new object. It also means we have to change the naming convention of our classes to comply with the conventions of JavaScript Objects. `headline-primary` became `headlinePrimary` *

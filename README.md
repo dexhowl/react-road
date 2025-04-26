@@ -13,7 +13,7 @@ Tooling is provided by [![Vite][Vite.js]][Vite-url]
 
 ## Progress
 
-- [ ] Fundamentals
+- [x] Fundamentals
 - [ ] Roadmap
     - [ ] Styling
     - [ ] Maintenance
