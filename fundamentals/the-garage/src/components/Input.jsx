@@ -13,7 +13,8 @@ export default function Input({id, name, text, type = 'text', onSearch, isFocuse
     return (
       <>
         <label htmlFor={id}>{children}</label>
-        <input ref={inputRef} id={id}  value={text} name={name} type={type} onChange={onSearch} />
+        <input ref={inputRef} id={id}  value={text} name={name} onChange={onSearch} type={type} />
+        <button type="submit" disabled={!text}>Search</button>
       </>
     )
   }

@@ -3,39 +3,39 @@ import useLocalStorageState from './hooks/useLocalStorageState';
 import useListReducer from './hooks/useListReducer';
 import Input from "./components/Input"
 import List from "./components/List"
-import { carList } from './data/carList'
+import Form from "./components/Form"
 import "./App.css"
 
 function App() {
+  const HACKER_NEWS_API_ENDPOINT = 'http://hn.algolia.com/api/v1/search?query='
   
-  const [query, setQuery] = useLocalStorageState('search',"React");
-  const [cars, dispatchCars] = useListReducer(carList, {data: [], isLoading: false, isError: false});
-  const filteredCars = searchCars(cars);
-  
-  function searchCars(cars) {
-    let newList = cars.data.filter((car) => {
-        return car.make.toLowerCase().includes(query.toLowerCase());
-    });
-    
-    return newList;
-  }
+  const [query, setQuery] = useLocalStorageState('search',"Tesla");
+  const [url, setUrl] = React.useState(`${HACKER_NEWS_API_ENDPOINT}${query}`)
+  const [news, dispatchNews] = useListReducer(url ,{data: [], isLoading: false, isError: false});
 
-  function handleRemoveCar(item) {
-    dispatchCars({type:"REMOVE_ITEM", payload: item});
+  function handleRemoveItem(item) {
+    dispatchNews({type:"REMOVE_ITEM", payload: item});
+
   }
 
   function handleSearch(event) {
     setQuery(event.target.value);
-    
+
   }
+  function handleSearchSubmit() {
+    setUrl(`${HACKER_NEWS_API_ENDPOINT}${query}`)
+  }
+  
 
   return (
    <div>
-      <Input id={'search'} name={'search'} text={query} onSearch={handleSearch} isFocused>
-        <strong>Search: </strong>
-      </Input>
+      <Form formAction={handleSearchSubmit}>
+        <Input id={'search'} name={'search'} text={query} onSearch={handleSearch} isFocused>
+          <strong>Search: </strong>
+        </Input>
+      </Form>
       <hr />
-      <List list={filteredCars} onRemoveItem={handleRemoveCar} loading={cars.isLoading} error={cars.isError}/>
+      <List list={news.data} onRemoveItem={handleRemoveItem} loading={news.isLoading} error={news.isError}/>
    </div>
   )
 }

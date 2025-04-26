@@ -1,20 +1,28 @@
 import * as React from "react";
+import axios from 'axios'
 
-export default function useListReducer(list, dataSet) {
-  const [value, dispatcValue] = React.useReducer(listReducer, dataSet);
+export default function useListReducer(endpoint, dataSet) {
+  const [value, dispatchValue] = React.useReducer(listReducer, dataSet);
 
+const getHackerNews = React.useCallback(async () => {
+        dispatchValue({ type: "FETCH_INIT" });
+
+        try {
+            const response = await axios.get(endpoint);
+            dispatchValue({ type: "FETCH_SUCCESS", payload: response.data.hits});
+        }
+        catch {
+            dispatchValue({ type: "FETCH_FAILURE" });
+        }
+    }, [endpoint]) 
+
+    
   React.useEffect(() => {
-    dispatcValue({ type: "FETCH_INIT" });
+    getHackerNews();
+        
+    }, [getHackerNews]);
 
-    getAsyncItems(list)
-        .then((result) => {
-        dispatcValue({ type: "FETCH_SUCCESS", payload: result.data.items });
-        })
-        .catch(() => dispatcValue({ type: "FETCH_FAILURE" }));
-    }, []);
-
-
-  return [value, dispatcValue];
+  return [value, dispatchValue];
 }
 
 function listReducer(state, action) {
@@ -33,15 +41,9 @@ function listReducer(state, action) {
     case "REMOVE_ITEM":
       return {
         ...state,
-        data: state.data.filter((item) => action.payload.id !== item.id),
+        data: state.data.filter((item) => action.payload.title !== item.title),
       };
     default:
       throw new Error();
   }
-}
-
-function getAsyncItems(list) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve({ data: { items: list } }), 1000);
-  });
 }

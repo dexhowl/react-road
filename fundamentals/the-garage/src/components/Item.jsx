@@ -1,12 +1,10 @@
 export default function Item({item, onRemoveItem}) {
-    const {year,make,model,miles} = item;
+
     
     return (
         <li>
-            <span>{year} </span>
-            <span>{make} </span>
-            <span>{model}: </span> 
-            <span>{miles} Miles </span>
+            <span><strong>{item.title}</strong> <a href={item.url} target="_blank" rel="noopener noreferrer">View Article</a> </span>
+            <span>by {item.author} </span>
             <button type='button' onClick={() => onRemoveItem(item)}>Delete</button>
         </li>
     )

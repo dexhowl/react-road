@@ -420,6 +420,13 @@ function Child() {
 - Returns a mutable object
 - Changes in the value of a `ref` do not cause your components to re-render. 
 
+### useCallback
+- Allows you to skip re-renders when props remain unchanged. 
+- Creates a cached version for comparison (memoized).
+- Must pass an array of dependencies so the hook knows which variables need monitoring. 
+- *Does Not* cache the results, only the function itself. 
+- The most common use-case would be performance optimization. 
+
 ### Custom Hooks
 - Used primarily for encapsulation and separate complex logic from your React components. 
 - Must start with `use` by convention similar to the built-in hooks mentioned above. 
@@ -429,7 +436,7 @@ function Child() {
 > [!CAUTION]
 > Custom Hooks DO NOT have access to component props!
 
-### Fragments
+## Fragments
 - Fragments are used to wrap two or more HTML elements when you don't want an additional DOM node like `div`
 - You'll either see `<React.Fragment>...</React.Frament>` or `<>...</>` as shorthand. 
 *Check out Search.jsx for an example*
