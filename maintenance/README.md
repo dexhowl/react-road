@@ -13,6 +13,22 @@
     - Fastest
     - Tests occur in isolation and are typically the easiers of all to write.
     - Allow for testing on a more granular level like individual functions or components
+        - When testing functions we provide input and verify the returned value (or output) is as expected.
+        - When testing components we check rendering, props, callback handlers.
+
+    
+### Test Files
+When using tools like Vitest, you'll notice that it automatically scans your project for test files. 
+These files will typically end with `*.test.jsx` in React. 
+
+In spite of Vitest's ability to automatically locate these files, it's a good practice to put them all in a predictable location so the entire team knows where to expect to find them. 
+
+In large projects it may be a good idea to have a dedicated `_tests_` folder though it's not required. 
+
+### Suites, Cases, and Assertions
+- A Test Case is an individual test that can be created using the `test` function or `it` alias. They are generally used to verify and individual function works. 
+- A Test Suite, on the other hand, is a collection of tests created using the `describe` function. For example, a single component/function can behave differently based on state or props. Grouping all tests related to that item make it simpler to keep results organized.
+- Assertions are the expectations we set within our test cases. The idea of an assertion is to "declare" what the result of your function should be or the expected behavior. Our testing tools like Vitest then tell us if we are wrong or right about the result.  
 
 ### Tools
 - Vitest
@@ -24,8 +40,14 @@ This means we have to import these modules or functions into our test.
 Though as you might suspect, storing test data in production or calling an API repeatedly in testing might cause some issues. (e.g. Exceeding Rate Limits, Additional Charges per API call, Added Database Maintenance requirements, etc.)
 
 This is where `Mocking` enters. It allows us to simulate API calls and/or database queries to confirm that our code provides the output as expected. 
+The goal of Mocking is the confirm OUR code works, not the third party entity. When something is mocked, we are essentially replacing it with our own simulated version.
+
+Running our database queries or api calls up against a mocked version of these means we can fully test our functions without any adverse side effects. 
+An `INSERT` on a mocked DB never actually reaches our database, production or otherwise. 
+Same with a mocked API, we can build a GET request and response and test whether or not the rest of our application's functions are about to display or process the data as expected. 
 
 
+All this with Zero impact to these external tools.
 
 ## Structure
 The majority of the projects within this repository should be structured as follows:
