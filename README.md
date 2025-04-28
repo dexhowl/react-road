@@ -15,7 +15,7 @@ Tooling is provided by [![Vite][Vite.js]][Vite-url]
 
 - [x] Fundamentals
 - [ ] Roadmap
-    - [ ] Styling
+    - [x] Styling
     - [ ] Maintenance
     - [ ] Advanced
     - [ ] Deployment
