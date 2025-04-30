@@ -5,8 +5,9 @@ export default function Item({item, onRemoveItem}) {
         <li>
             <span><strong>{item.title}</strong> <a href={item.url} target="_blank" rel="noopener noreferrer">View Article</a> </span>
             
-            <span>{item.points} </span>
+            <span>by {item.author} </span>
             <span>{item.num_comments} </span>
+            <span>{item.points} </span>
             <button type='button' onClick={() => onRemoveItem(item)}>Delete</button>
         </li>
     )

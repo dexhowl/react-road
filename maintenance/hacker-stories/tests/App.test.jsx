@@ -1,3 +1,4 @@
+/* globals describe expect waitFor afterEach vi it renderHook act*/
 import useListReducer from '../src/hooks/useListReducer';
 import Input from "../src/components/Input"
 import Form from "../src/components/Form"

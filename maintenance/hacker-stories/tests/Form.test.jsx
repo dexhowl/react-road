@@ -1,9 +1,10 @@
-/* globals describe afterEach vi it renderHook act*/
+/* globals describe render screen afterEach vi it renderHook act*/
 
-import Item from '../src/components/Item'
+import Form from '../src/components/Form'
 
-describe('',() => {
+describe('Form',() => {
     it('Renders',() => {
+        render(<Form/>);
         
     })
     it('Accepts props',() => {
