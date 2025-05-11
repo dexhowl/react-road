@@ -1,7 +1,6 @@
 import * as React from 'react'
 import useLocalStorageState from './hooks/useLocalStorageState';
 import useListReducer from './hooks/useListReducer';
-import Input from "./components/Input"
 import List from "./components/List"
 import Form from "./components/Form"
 import "./App.css"
@@ -29,11 +28,7 @@ function App() {
 
   return (
    <div>
-      <Form formAction={handleSearchSubmit}>
-        <Input id={'search'} name={'search'} text={query} onSearch={handleSearch} isFocused>
-          <strong>Search: </strong>
-        </Input>
-      </Form>
+      <Form formAction={handleSearchSubmit} userInput={query} onSearch={handleSearch} />
       <hr />
       <List list={news.data} onRemoveItem={handleRemoveItem} loading={news.isLoading} error={news.isError}/>
    </div>

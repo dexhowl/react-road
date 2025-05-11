@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function Input({id, name, text, type = 'text', onSearch, isFocused ,children}) {
+export default function Input({id, text, type = 'text', onSearch, isFocused ,children}) {
   
   const inputRef = React.useRef();
 
@@ -13,7 +13,7 @@ export default function Input({id, name, text, type = 'text', onSearch, isFocuse
     return (
       <>
         <label htmlFor={id}>{children}</label>
-        <input ref={inputRef} id={id}  value={text} name={name} onChange={onSearch} type={type} />
+        <input ref={inputRef} id={id} value={text} onChange={onSearch} type={type} />
         <button type="submit" disabled={!text}>Search</button>
       </>
     )

@@ -20,13 +20,13 @@ describe('Item',() => {
         expect(screen.getByText("View Article")).toHaveAttribute('href', "https://runelite.net/" )
     })
 
-    it('renders button with dismiss role ',() => {
+    it('renders button',() => {
         render(<Item item={storyOne}/>);
 
         expect(screen.getByRole('button')).toBeInTheDocument();
     });
 
-    it('',() => {
+    it('executes callback on button click',() => {
         const handleRemoveItem = vi.fn();
 
         render(<Item item={storyOne} onRemoveItem={handleRemoveItem}/>)

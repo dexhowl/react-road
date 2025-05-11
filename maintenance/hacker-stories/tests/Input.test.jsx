@@ -3,11 +3,21 @@
 import Input from '../src/components/Input'
 
 describe('Input',() => {
+
+  
+
+    
+
     it('Renders',() => {
-        render(<Input/>)
+        render(<Input />);
+        screen.debug();
+
         
     })
     it('Accepts props',() => {
+        render(<Input />);
+
+
         
     })
     

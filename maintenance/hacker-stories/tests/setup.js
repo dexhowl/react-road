@@ -7,7 +7,7 @@ expect.extend(matchers);
 
 afterEach(() => {
     cleanup();
-});
+}); 
 
 globalThis.renderHook = renderHook;
 globalThis.fireEvent = fireEvent;

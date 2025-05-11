@@ -31,8 +31,8 @@ In large projects it may be a good idea to have a dedicated `_tests_` folder tho
 - Assertions are the expectations we set within our test cases. The idea of an assertion is to "declare" what the result of your function should be or the expected behavior. Our testing tools like Vitest then tell us if we are wrong or right about the result.  
 
 ### Tools
-- Vitest
-- React Testing Library
+- [Vitest](https://vitest.dev/)
+- [Testing Library](https://testing-library.com/docs/)
 
 ### Mocking
 Confirming a component renders in a test environment is useful but not if it's supposed to include data from an API call or a database. 
@@ -45,7 +45,6 @@ The goal of Mocking is the confirm OUR code works, not the third party entity. W
 Running our database queries or api calls up against a mocked version of these means we can fully test our functions without any adverse side effects. 
 An `INSERT` on a mocked DB never actually reaches our database, production or otherwise. 
 Same with a mocked API, we can build a GET request and response and test whether or not the rest of our application's functions are about to display or process the data as expected. 
-
 
 All this with Zero impact to these external tools.
 
