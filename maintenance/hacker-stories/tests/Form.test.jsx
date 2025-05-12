@@ -55,5 +55,10 @@ describe("Form", () => {
     
     
   });
+
+  it('renders snapshot',() => {
+    const {container} = render(<Form {...FormProps} />)
+    expect(container.firstChild).toMatchSnapshot();
+  })
   
 });

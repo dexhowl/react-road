@@ -15,6 +15,14 @@
     - Allow for testing on a more granular level like individual functions or components
         - When testing functions we provide input and verify the returned value (or output) is as expected.
         - When testing components we check rendering, props, callback handlers.
+- Snapshot
+    - Lightweight
+    - Allows us to confirm spot when we accidentally make changes to the DOM.
+    - Stores copy of HTML within the project from a single point in time. 
+        - Can be updated when changes to the DOM are intended.
+
+> [!CAUTION]
+> Snapshots should ONLY be used for simple components that are not commonly updated. 
 
     
 ### Test Files
@@ -54,7 +62,7 @@ The majority of the projects within this repository should be structured as foll
 ```
 project-name/
 ├── public/                # Static assets
-├── node_modules/          # Static assets
+├── node_modules/          # Dependecies
 ├── src/                   # Source code
 │   ├── components/        # Reusable components
 │   ├── styles/            # CSS or SCSS files
@@ -62,6 +70,7 @@ project-name/
 │   ├── App.jsx            # Root component
 │   ├── main.jsx           # Entry point
 │   └── assets/            # Images or other assets
+├── tests/                 # Testing suite
 ├── .gitignore             # Git Ignore File
 ├── eslint.config.js       # ESLint configuration
 ├── index.html             # Main HTML file
